@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Homepage</title>
+    </head>
+    <body>
+        <h1>Hello World!!!</h1>
+        <p>Today is {{today}}</p>
+        <form action="/" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

@@ -166,10 +166,13 @@ if __name__ == '__main__':
     video = cv2.VideoCapture('zaznamprodiplomkuuu.mp4')
     trackMultipleObjects(carCascade, video)
 
-def loadInputAndProcess(input):
+def loadInputAndProcess(input, watch):
     carCascade = cv2.CascadeClassifier('myhaar.xml')
     video = cv2.VideoCapture(input)
     trackMultipleObjects(carCascade, video)
-    os.remove('media/output.mp4')
-    ff = ffmpy.FFmpeg(inputs={'media/output.avi': None}, outputs={'media/output.mp4': None})
-    ff.run()
+    if (watch):
+        if os.path.exists('media/output.mp4'):
+            os.remove('media/output.mp4')
+
+        ff = ffmpy.FFmpeg(inputs={'media/output.avi': None}, outputs={'media/output.mp4': None})
+        ff.run()
